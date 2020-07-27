@@ -1,0 +1,34 @@
+<div class="list border mb-3">
+    <h5 class="mb-3 list-heading">{{list.name}}
+        <i class="fa fa-times float-right pointer text-primary" (click)="removeListClick()"></i>
+        <i class="fa fa-pencil mr-2 float-right pointer text-primary" (click)="editListName()"></i>
+    </h5>
+    <hr>
+    <div class="item-list" cdkDropList [id]="list.name" [cdkDropListData]="list.cards"
+        (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="connectedTo">
+        <app-card (editCard)="onEditCard($event)" cdkDrag class="item-box" (removeCard)="removeCard($event)"
+            *ngFor="let card of list.cards" [card]="card"></app-card>
+    </div>
+    <button type="button" class="btn btn-link my-3" (click)="addNewCard()">
+        <i class="fa fa-plus"></i> Add A Card
+    </button>
+</div>
+<app-modal title="Add Card" [show]="addCard" (onSave)="saveNewCard($event)">
+    <div class="row">
+        <div class="col-12">
+            <label for="">Name</label>
+            <input type="text" (keyup.enter)="saveNewCard(true)" [ngClass]="{'border border-danger':showCardError}"
+                class="form-control" [(ngModel)]="cardTitle">
+            <span *ngIf="showCardError" class="text-danger">Please enter card Name</span>
+        </div>
+    </div>
+</app-modal>
+
+
+<app-modal title="Delete List" [show]="removeListModal" (onSave)="removeListConform($event)">
+    <div class="row">
+        <div class="col-12">
+            <label for="">Sure, Do want to delete list?</label>
+        </div>
+    </div>
+</app-modal>

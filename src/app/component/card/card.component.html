@@ -1,0 +1,27 @@
+<div class="card mb-2">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-9">
+                {{card?.title}}
+
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-link p-0" (click)="editCardClick(card)">
+                    <i class="fa fa-pencil"></i>
+                </button>
+                <button type="button" class="btn btn-link p-0" (click)="removeCardClick()">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<app-modal title="Delete Card" [show]="removeCardModal" (onSave)="removeCardConform($event)">
+    <div class="row">
+        <div class="col-12">
+            <label for="">Sure, Do want to delete card?</label>
+        </div>
+    </div>
+</app-modal>

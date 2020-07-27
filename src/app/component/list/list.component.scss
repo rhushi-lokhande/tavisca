@@ -1,0 +1,12 @@
+.list {
+  padding: 15px;
+  background-color: #fdfdfd;
+  min-width: 300px;
+  margin-right: 30px;
+  .list-heading {
+    text-transform: capitalize;
+  }
+}
+.item-list {
+  min-height: 50px;
+}

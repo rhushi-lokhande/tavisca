@@ -1,0 +1,23 @@
+<!-- Modal -->
+<div class="modal show" [ngClass]="{'show':show}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{title}}</h5>
+                <button type="button" class="close" (click)="save(false)">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ng-content></ng-content>
+            </div>
+            <div class="modal-footer" *ngIf="!alert">
+                <button type="button" class="btn btn-secondary" (click)="save(false)">Cancel</button>
+                <button type="button" class="btn btn-primary" (click)="save(true)">Save</button>
+            </div>
+            <div class="modal-footer" *ngIf="alert">
+                <button type="button" class="btn btn-primary" (click)="save(false)">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
